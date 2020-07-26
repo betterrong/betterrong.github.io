@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>如何使用 VuePress 写文档 - rong&#39;s bridge</title><meta name="Description" content="本文记录 VuePress 的搭建以及配置过程。"><meta property="og:title" content="如何使用 VuePress 写文档" />
+<meta property="og:description" content="本文记录 VuePress 的搭建以及配置过程。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://betterrong.github.io/how-to-use-vuepress/" />
+<meta property="og:image" content="https://betterrong.github.io/how-to-use-vuepress/featured-image.png"/>
+<meta property="article:published_time" content="2020-07-21T21:03:15+08:00" />
+<meta property="article:modified_time" content="2020-07-21T21:03:15+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://betterrong.github.io/how-to-use-vuepress/featured-image.png"/>
+<meta name="twitter:title" content="如何使用 VuePress 写文档"/>
+<meta name="twitter:description" content="本文记录 VuePress 的搭建以及配置过程。"/>
+<meta name="application-name" content="rong&#39;s bridge">
+<meta name="apple-mobile-web-app-title" content="rong&#39;s bridge"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://betterrong.github.io/how-to-use-vuepress/" /><link rel="prev" href="https://betterrong.github.io/how-to-use-sprintf/" /><link rel="next" href="https://betterrong.github.io/leetcode-13/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "如何使用 VuePress 写文档",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/betterrong.github.io\/how-to-use-vuepress\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/betterrong.github.io\/how-to-use-vuepress\/featured-image.png",
+                            "width":  799 ,
+                            "height":  234 
+                        }],"genre": "posts","keywords": "文档书写, vuepress","wordcount":  3709 ,
+        "url": "https:\/\/betterrong.github.io\/how-to-use-vuepress\/","datePublished": "2020-07-21T21:03:15+08:00","dateModified": "2020-07-21T21:03:15+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/betterrong.github.io\/images\/avatar.jpg"},"author": {
+                "@type": "Person",
+                "name": "rong"
+            },"description": "本文记录 VuePress 的搭建以及配置过程。"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="rong&#39;s bridge"><span class="header-title-pre">🌌</span><span id="id-2" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="😀">🔥 归档 </a><a class="menu-item" href="/tags/" title="😄">🔖 标签 </a><a class="menu-item" href="/categories/" title="🤣">📁 分类 </a><a class="menu-item" href="/reading/" title="阅读记录">📚 阅读 </a><a class="menu-item" href="/navigation/" title="友情链接">⌨ 键盘导航 </a><a class="menu-item" href="/notebook/" title="我的笔记">📔 notebook </a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="rong&#39;s bridge"><span class="header-title-pre">🌌</span><span id="id-3" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="😀">🔥归档</a><a class="menu-item" href="/tags/" title="😄">🔖标签</a><a class="menu-item" href="/categories/" title="🤣">📁分类</a><a class="menu-item" href="/reading/" title="阅读记录">📚阅读</a><a class="menu-item" href="/navigation/" title="友情链接">⌨键盘导航</a><a class="menu-item" href="/notebook/" title="我的笔记">📔notebook</a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">如何使用 VuePress 写文档</h1><h2 class="single-subtitle">VuePress 是使用 Vue 驱动的静态网站生成器。</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://betterrong.cn" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>rong</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/vetgjilu/"><i class="far fa-folder fa-fw"></i>折腾记录</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-21">2020-07-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3709 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id="/how-to-use-vuepress/" class="leancloud_visitors" data-flag-title="如何使用 VuePress 写文档">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/how-to-use-vuepress/featured-image.png"
+        data-srcset="/how-to-use-vuepress/featured-image.png, /how-to-use-vuepress/featured-image.png 1.5x, /how-to-use-vuepress/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/how-to-use-vuepress/featured-image.png"
+        title="本文记录 VuePress 的搭建以及配置过程。" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#0x00-简介">0x00 简介</a></li>
+    <li><a href="#0x01-准备">0x01 准备</a>
+      <ul>
+        <li><a href="#11-安装">1.1 安装</a></li>
+        <li><a href="#1-2-创建项目目录">1. 2 创建项目目录</a></li>
+        <li><a href="#13-项目初始化">1.3 项目初始化</a></li>
+        <li><a href="#14-创建-vuepress-项目的文件夹和文件">1.4 创建 VuePress 项目的文件夹和文件</a>
+          <ul>
+            <li><a href="#141-文件目录结构">1.4.1 文件目录结构</a></li>
+          </ul>
+        </li>
+        <li><a href="#15-设置页面具体内容">1.5 设置页面具体内容</a>
+          <ul>
+            <li><a href="#151-修改-configjs-文件">1.5.1 修改 <code>config.js</code> 文件：</a></li>
+            <li><a href="#152-设置首页内容">1.5.2 设置首页内容</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#0x02-书写文档">0x02 书写文档</a>
+      <ul>
+        <li><a href="#21-查看预览">2.1 查看预览</a></li>
+        <li><a href="#22-修改页面导航栏侧边栏导航栏">2.2 修改页面导航栏、侧边栏导航栏</a></li>
+        <li><a href="#23-markdown-及其他文件路径解析">2.3 markdown 及其他文件路径解析</a></li>
+        <li><a href="#24-默认的页面路由">2.4 默认的页面路由</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x03-其他问题">0x03 其他问题</a>
+      <ul>
+        <li><a href="#31-热更新问题">3.1 热更新问题</a></li>
+        <li><a href="#32-修改主题颜色">3.2 修改主题颜色</a></li>
+        <li><a href="#33-在-markdown-中嵌入-vue-组件">3.3 在 markdown 中嵌入 vue 组件</a></li>
+        <li><a href="#34-markdown-内容的其他扩展">3.4 markdown 内容的其他扩展</a></li>
+        <li><a href="#35-自定义容器">3.5 自定义容器</a></li>
+        <li><a href="#36-官网一些其他功能">3.6 官网一些其他功能</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x04-参考">0x04 参考</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="typeit"><div id="id-1" class=""></div></div>
+
+<h2 id="0x00-简介">0x00 简介</h2>
+<p>VuePress 由两部分组成：第一部分是一个<a href="https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core" target="_blank" rel="noopener noreffer">极简静态网站生成器</a>，它包含由 Vue 驱动的<a href="https://www.vuepress.cn/theme/" target="_blank" rel="noopener noreffer">主题系统</a>和<a href="https://www.vuepress.cn/plugin/" target="_blank" rel="noopener noreffer">插件 API</a>，另一个部分是为书写技术文档而优化的<a href="https://www.vuepress.cn/theme/default-theme-config.html" target="_blank" rel="noopener noreffer">默认主题</a>，它的诞生初衷是为了支持 Vue 及其子项目的文档需求。</p>
+<p>每一个由 VuePress 生成的页面都带有预渲染好的 HTML，也因此具有非常好的加载性能和搜索引擎优化（SEO）。同时，一旦页面被加载，Vue 将接管这些静态内容，并将其转换成一个完整的单页应用（SPA），其他的页面则会只在用户浏览到的时候才按需加载。</p>
+<p>我目前配制好的笔记如下：</p>
+<p><figure><a class="lightgallery" href="https://s1.ax1x.com/2020/07/21/UTt8hQ.png" title="UTt8hQ.png" data-thumbnail="https://s1.ax1x.com/2020/07/21/UTt8hQ.png" data-sub-html="<h2> </h2><p>UTt8hQ.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://s1.ax1x.com/2020/07/21/UTt8hQ.png"
+            data-srcset="https://s1.ax1x.com/2020/07/21/UTt8hQ.png, https://s1.ax1x.com/2020/07/21/UTt8hQ.png 1.5x, https://s1.ax1x.com/2020/07/21/UTt8hQ.png 2x"
+            data-sizes="auto"
+            alt="https://s1.ax1x.com/2020/07/21/UTt8hQ.png" />
+    </a><figcaption class="image-caption"> </figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://s1.ax1x.com/2020/07/21/UTt3tg.png" title="UTt3tg.png" data-thumbnail="https://s1.ax1x.com/2020/07/21/UTt3tg.png" data-sub-html="<h2> </h2><p>UTt3tg.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://s1.ax1x.com/2020/07/21/UTt3tg.png"
+            data-srcset="https://s1.ax1x.com/2020/07/21/UTt3tg.png, https://s1.ax1x.com/2020/07/21/UTt3tg.png 1.5x, https://s1.ax1x.com/2020/07/21/UTt3tg.png 2x"
+            data-sizes="auto"
+            alt="https://s1.ax1x.com/2020/07/21/UTt3tg.png" />
+    </a><figcaption class="image-caption"> </figcaption>
+    </figure></p>
+<h2 id="0x01-准备">0x01 准备</h2>
+<h3 id="11-安装">1.1 安装</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">cnpm install -g vuepress//全局安装
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="1-2-创建项目目录">1. 2 创建项目目录</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mkdir MyDocs <span class="o">&amp;&amp;</span> <span class="nb">cd</span> MyDocs
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="13-项目初始化">1.3 项目初始化</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">npm init -y
+</code></pre></td></tr></table>
+</div>
+</div><p>将会创建一个 <code>package.json</code> 文件，内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;MyDocs&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;index.js&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;dev&#34;</span><span class="p">:</span> <span class="s2">&#34;vuepress dev docs&#34;</span><span class="p">,</span> 	<span class="err">//用于实时预览</span>
+    <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;vuepress build docs&#34;</span>  <span class="err">//用于打包项目</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;keywords&#34;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;license&#34;</span><span class="p">:</span> <span class="s2">&#34;ISC&#34;</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="14-创建-vuepress-项目的文件夹和文件">1.4 创建 VuePress 项目的文件夹和文件</h3>
+<h4 id="141-文件目录结构">1.4.1 文件目录结构</h4>
+<p>VuePress 遵循 <strong>“约定优于配置”</strong> 的原则，推荐的目录结构如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">.
+├── docs
+│   ├── .vuepress (可选的)	//存放核心内容的文件夹
+│   │   ├── components (可选的)	//存放你需要添加的vue组件
+│   │   ├── theme (可选的)
+│   │   │   └── Layout.vue
+│   │   ├── public (可选的) //存放静态文件，如图片等
+│   │   ├── styles (可选的)	//存放需要定制的样式
+│   │   │   ├── index.styl
+│   │   │   └── palette.styl	//配置页面主题颜色的文件
+│   │   ├── templates (可选的, 谨慎配置)
+│   │   │   ├── dev.html
+│   │   │   └── ssr.html
+│   │   ├── config.js (可选的)	//设定顶部导航栏、侧边导航栏等项目配置的核心文件
+│   │   └── enhanceApp.js (可选的)
+│   │ 
+│   ├── README.md	//首页展示用的markdown文件
+│   ├── guide
+│   │   └── README.md
+│   └── config.md
+│ 
+└── package.json	//之前创建的Node.js项目描述文件
+
+
+</code></pre></td></tr></table>
+</div>
+</div><p>我的F:/MyDocs下的目录结构如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">$tree</span> /f
+卷 资料 的文件夹 PATH 列表
+卷序列号为 FE22-9FCB
+
+│  package.json
+│
+└─docs
+    │  README.md
+    │
+    ├─.vuepress
+    │  │  config.js
+    │  │
+    │  └─public
+    │          favicon.ico
+    │          notebooks.png
+    │
+    └─Linux
+        └─vbird1
+            │  README.md
+            │
+            └─1-introduction
+                    01.md
+                    02.md
+                    03.md
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="15-设置页面具体内容">1.5 设置页面具体内容</h3>
+<h4 id="151-修改-configjs-文件">1.5.1 修改 <code>config.js</code> 文件：</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;首页&#39;</span><span class="p">,</span> <span class="c1">// 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
+</span><span class="c1"></span>    <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;裂泉的前端记录&#39;</span><span class="p">,</span> <span class="c1">// meta 中的描述文字，用于SEO
+</span><span class="c1"></span>    <span class="c1">// 注入到当前页面的 HTML &lt;head&gt; 中的标签
+</span><span class="c1"></span>    <span class="nx">head</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">,</span> 
+            <span class="p">{</span> <span class="nx">rel</span><span class="o">:</span> <span class="s1">&#39;icon&#39;</span><span class="p">,</span> <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;/favicon.ico&#39;</span> <span class="p">}</span>
+            <span class="c1">//浏览器的标签栏的网页图标，第一个&#39;/&#39;会遍历public文件夹的文件
+</span><span class="c1"></span>        <span class="p">],</span>  
+    <span class="p">],</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>修改完成后，在<code>docs/.vuepress/public</code> 文件夹放入相应的 <code>favicon.ico</code> 和<code>notebooks.png</code></p>
+<h4 id="152-设置首页内容">1.5.2 设置首页内容</h4>
+<p>按照官方文档的格式修改 <code>README.md</code> 文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">---
+home: true
+heroImage: /notebooks.png
+actionText: 鸟哥的 Linux 私房菜
+actionLink: /Linux/vbird1/
+features:
+<span class="k">-</span> title: 好记性不如烂笔头
+  details: 一定要好好做好记录，对知识点进行整理与归纳。
+<span class="k">-</span> title: 分类管理笔记
+  details: 使用 vuepress 记录系统长期的的学习笔记，hugo 写个人博客记录零碎知识点或心得。
+<span class="k">-</span> title: less is more
+  details: 简洁就是美，笔记和博客就只应该专注于记录。切记勿舍本逐末。
+footer: MIT Licensed | Copyright © 2020-present Evan You
+---
+
+​``` go
+package myLife
+
+import(
+  &#34;read&#34;
+  &#34;coding&#34;
+  &#34;share&#34;
+  ...
+)
+
+  for alive == true {
+    learn()
+  }
+​```
+<span class="k">
+</span><span class="k">&gt; </span><span class="ge">**好好学习，天天向上！**
+</span><span class="ge"></span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>温馨提示<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">heroImage 的地址配置第一个 &lsquo;/&rsquo; 默认指向的是 docs/.vuepress/public，你需要在此文件夹放置你的首页图片。
+actionLink 地址配置第一个 &lsquo;/&rsquo; 默认指向的是 docs/，若未路径文件不存在点击进去会跳转至 404。文件路径之后会详细讲解。</div>
+        </div>
+    </div>
+<h2 id="0x02-书写文档">0x02 书写文档</h2>
+<h3 id="21-查看预览">2.1 查看预览</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">$npm</span> dev docs
+</code></pre></td></tr></table>
+</div>
+</div><p>打开 <code>http://localhost:8080/</code>  可预览网站。</p>
+<h3 id="22-修改页面导航栏侧边栏导航栏">2.2 修改页面导航栏、侧边栏导航栏</h3>
+<p>修改  <code>config.js</code>  文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">//...省略部分代码
+</span><span class="c1"></span>    
+    <span class="c1">//下面涉及到的md文件和其他文件的路径下一步再详细解释
+</span><span class="c1"></span>    <span class="nx">themeConfig</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">logo</span><span class="o">:</span> <span class="s1">&#39;/egg.png&#39;</span><span class="p">,</span>  <span class="c1">//网页顶端导航栏左上角的图标
+</span><span class="c1"></span>        
+        <span class="c1">//顶部导航栏
+</span><span class="c1"></span>        <span class="nx">nav</span><span class="o">:</span> <span class="p">[</span>           
+            <span class="c1">//格式一：直接跳转，&#39;/&#39;为不添加路由，跳转至首页
+</span><span class="c1"></span>            <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;首页&#39;</span><span class="p">,</span> <span class="nx">link</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span> <span class="p">},</span>    
+            
+            <span class="c1">//格式二：添加下拉菜单，link指向的文件路径
+</span><span class="c1"></span>            <span class="p">{</span>
+                <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;分类&#39;</span><span class="p">,</span>  <span class="c1">//默认显示        
+</span><span class="c1"></span>                <span class="nx">ariaLabel</span><span class="o">:</span> <span class="s1">&#39;分类&#39;</span><span class="p">,</span>   <span class="c1">//用于识别的label
+</span><span class="c1"></span>                <span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;文章&#39;</span><span class="p">,</span> <span class="nx">link</span><span class="o">:</span> <span class="s1">&#39;/pages/folder1/test1.md&#39;</span> <span class="p">},</span>  
+                    <span class="c1">//点击标签会跳转至link的markdown文件生成的页面
+</span><span class="c1"></span>                    <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;琐碎&#39;</span><span class="p">,</span> <span class="nx">link</span><span class="o">:</span> <span class="s1">&#39;/pages/folder2/test4.md&#39;</span> <span class="p">},</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;功能演示&#39;</span><span class="p">,</span> <span class="nx">link</span><span class="o">:</span> <span class="s1">&#39;/pages/folder1/test3.md&#39;</span> <span class="p">},</span>
+            
+            <span class="c1">//格式三：跳转至外部网页，需http/https前缀
+</span><span class="c1"></span>            <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;Github&#39;</span><span class="p">,</span> <span class="nx">link</span><span class="o">:</span> <span class="s1">&#39;https://github.com/dwanda&#39;</span> <span class="p">},</span>
+        <span class="p">],</span>
+        
+        <span class="c1">//侧边导航栏：会根据当前的文件路径是否匹配侧边栏数据，自动显示/隐藏
+</span><span class="c1"></span>        <span class="nx">sidebar</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s1">&#39;/pages/folder1/&#39;</span><span class="o">:</span><span class="p">[</span>         
+                <span class="p">{</span>
+                    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;测试菜单1&#39;</span><span class="p">,</span>   <span class="c1">// 一级菜单名称
+</span><span class="c1"></span>                    <span class="nx">collapsable</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// false为默认展开菜单, 默认值true是折叠,
+</span><span class="c1"></span>                    <span class="nx">sidebarDepth</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>    <span class="c1">//  设置侧边导航自动提取markdown文件标题的层级，默认1为h2层级
+</span><span class="c1"></span>                    <span class="nx">children</span><span class="o">:</span> <span class="p">[</span>
+                        <span class="p">[</span><span class="s1">&#39;test1.md&#39;</span><span class="p">,</span> <span class="s1">&#39;子菜单1&#39;</span><span class="p">],</span>  <span class="c1">//菜单名称为&#39;子菜单1&#39;，跳转至/pages/folder1/test1.md
+</span><span class="c1"></span>                        <span class="p">[</span><span class="s1">&#39;test3.md&#39;</span><span class="p">,</span> <span class="s1">&#39;子菜单2&#39;</span><span class="p">]</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;测试菜单2&#39;</span><span class="p">,</span>
+                    <span class="nx">collapsable</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
+                    <span class="nx">children</span><span class="o">:</span> <span class="p">[</span>
+                        <span class="p">[</span><span class="s1">&#39;test2.md&#39;</span><span class="p">,</span> <span class="s1">&#39;子菜单1&#39;</span><span class="p">]</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            
+            <span class="c1">//...可添加多个不同的侧边栏，不同页面会根据路径显示不同的侧边栏
+</span><span class="c1"></span>        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>我的 <code>config.js</code> 文件如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;学习笔记&#39;</span><span class="p">,</span>
+  <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;学习笔记文档整理&#39;</span><span class="p">,</span>
+  <span class="c1">// 注入到当前页面的 HTML &lt;head&gt; 中的标签
+</span><span class="c1"></span>  <span class="nx">head</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">rel</span><span class="o">:</span> <span class="s1">&#39;icon&#39;</span><span class="p">,</span> <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;/favicon.ico&#39;</span> <span class="p">}],</span> <span class="c1">// 增加一个自定义的 favicon(网页标签的图标)
+</span><span class="c1"></span>  <span class="p">],</span>
+  <span class="nx">base</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="c1">// 这是部署到github相关的配置 下面会讲
+</span><span class="c1"></span>  <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;./dist&#39;</span><span class="p">,</span>
+  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[],</span>
+  <span class="nx">markdown</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">lineNumbers</span><span class="o">:</span> <span class="kc">true</span> <span class="c1">// 代码块显示行号
+</span><span class="c1"></span>  <span class="p">},</span>
+  <span class="nx">themeConfig</span><span class="o">:</span> <span class="p">{</span>
+    <span class="c1">// search: true,
+</span><span class="c1"></span>    <span class="nx">searchMaxSuggestions</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span><span class="c1">//只会为页面的标题、h2 、 h3 以及 tags 构建搜索索引。
+</span><span class="c1"></span>    <span class="nx">nav</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;主页&#39;</span><span class="p">,</span> <span class="nx">link</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;Linux学习&#39;</span><span class="p">,</span>
+        <span class="nx">items</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;鸟哥的私房菜基础学习篇&#39;</span><span class="p">,</span> <span class="nx">link</span><span class="o">:</span> <span class="s1">&#39;/Linux/vbird1/&#39;</span> <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nx">sidebar</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s1">&#39;/Linux/vbird1/&#39;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;鸟哥的私房菜基础学习篇&#39;</span><span class="p">,</span><span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/Linux/vbird1/&#39;</span><span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;1 Linux的规则和安装&#39;</span><span class="p">,</span>
+          <span class="nx">collapsable</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="nx">children</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;1.1 计算机概论&#39;</span><span class="p">,</span><span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/Linux/vbird1/1-introduction/01&#39;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;1.2 Linux是什么与如何学习&#39;</span><span class="p">,</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/Linux/vbird1/1-introduction/02&#39;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;1.3 主机规划与磁盘分区&#39;</span><span class="p">,</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/Linux/vbird1/1-introduction/03&#39;</span><span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nx">sidebarDepth</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="c1">// e&#39;b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
+</span><span class="c1"></span>    <span class="nx">lastUpdated</span><span class="o">:</span> <span class="s1">&#39;Last Updated&#39;</span><span class="c1">// 文档更新时间：每个文件git最后提交的时间
+</span><span class="c1"></span>    <span class="c1">// logo: &#39;/logo.png&#39;,//导航栏logo
+</span><span class="c1"></span>    <span class="c1">// displayAllHeaders: true // 显示所有页面的标题链接：
+</span><span class="c1"></span>  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>此时我们的网页首页其他页面暂时无法跳转，因为此处点击菜单跳转时，页面对应的 markdown 文件为空，会跳转至 404 页面。而侧边栏则会自动匹配当前页面路径，若侧边栏数据存在当前页面路径，则显示出来，路径匹配不到则隐藏侧边栏，这也是为什么它可以不同页面匹配不同的侧边栏的原因。</p>
+<h3 id="23-markdown-及其他文件路径解析">2.3 markdown 及其他文件路径解析</h3>
+<p>我们的链接都是链接到 markdown 文件，在 vuepress 打包后会自动生成页面。若链接对应的 markdown 文件不存在，则会跳转 404。若存在，则跳转解析生成的页面。</p>
+<p>还有得明确一个概念，vuepress 的文件寻址，<strong>不同类型的文件都已经预设好不同的默认路径</strong>。比如说上一步的 logo 图片引用的路径，就是遍历<code>docs/.vuepress/public</code> 寻找文件，我们只需要把图片放在这个文件夹就可以了。markdown 的文件就按我写的放在 docs/pages 文件夹下，里面每个文件夹名字就是一个子路径。如此类推。每个不同类型的文件必须放置在按照规定好的位置。</p>
+<p><strong>文件路径的默认寻址方式</strong></p>
+<ul>
+<li>和图标 / 图片等静态资源相关的，第一个 &lsquo;/&rsquo; 默认指向的是 docs/.vuepress/public/</li>
+<li>侧边栏 / 导航栏链接的 markdown 文件，第一个 &lsquo;/&rsquo; 默认指向的是 docs/，我们这里是都放置在 docs/pages 里</li>
+<li>嵌入在 markdown 中使用的 Vue 组件，放置在 docs/.vuepress/components 目录中</li>
+</ul>
+<h3 id="24-默认的页面路由">2.4 默认的页面路由</h3>
+<p>此处我们把 <code>docs</code> 目录作为 <code>targetDir</code> （参考 <a href="https://www.vuepress.cn/api/cli.html#%e5%9f%ba%e6%9c%ac%e7%94%a8%e6%b3%95" target="_blank" rel="noopener noreffer">命令行接口</a>），下面所有的 “文件的相对路径” 都是相对于 <code>docs</code> 目录的。</p>
+<p>对于上述的目录结构，默认页面路由地址如下：</p>
+<table>
+<thead>
+<tr>
+<th>文件的相对路径</th>
+<th>页面路由地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/README.md</code></td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><code>/guide/README.md</code></td>
+<td><code>/guide/</code></td>
+</tr>
+<tr>
+<td><code>/config.md</code></td>
+<td><code>/config.html</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="0x03-其他问题">0x03 其他问题</h2>
+<h3 id="31-热更新问题">3.1 热更新问题</h3>
+<p>由于项目结构没有<a href="https://www.webpackjs.com/guides/hot-module-replacement/" target="_blank" rel="noopener noreffer">热更新</a>，所以每次调整 config.js 之后，都需要重新 npm run dev 一次。更新已存在的 markdown 文件的时候会实时热更新。</p>
+<h3 id="32-修改主题颜色">3.2 修改主题颜色</h3>
+<p>只需要在我们的 <strong>'.vuepress/styles/palette.styl&rsquo;</strong> 文件中添加一下代码，再修改它的颜色进行保存，就会自动改变。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">    // 默认值
+    $accentColor = #3eaf7c        //主题颜色
+    $textColor = #2c3e50
+    $borderColor = #eaecef
+    $codeBgColor = #282c34
+    $badgeTipColor = #42b983
+    $badgeWarningColor = darken(#ffe564, 35%)
+    $badgeErrorColor = #DA5961
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="33-在-markdown-中嵌入-vue-组件">3.3 在 markdown 中嵌入 vue 组件</h3>
+<p>首先先把 vue 组件编辑好，直接放在我们之前创建的 <code>docs/.vuepress/components</code> 文件夹中。只需要在 markdown 文件中，直接按下面的方法使用组件。无需其他引入即可<a href="https://vuepress.vuejs.org/zh/guide/using-vue.html#%e6%b5%8f%e8%a7%88%e5%99%a8%e7%9a%84-api-%e8%ae%bf%e9%97%ae%e9%99%90%e5%88%b6" target="_blank" rel="noopener noreffer">加载 vue 组件</a>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;ClientOnly&gt;
+  &lt;HomeLayout/&gt;    //你的组件名字
+&lt;/ClientOnly&gt;
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="34-markdown-内容的其他扩展">3.4 markdown 内容的其他扩展</h3>
+<ul>
+<li><a href="https://vuepress.vuejs.org/zh/guide/assets.html" target="_blank" rel="noopener noreffer">添加本地图片资源</a></li>
+<li><a href="https://vuepress.vuejs.org/zh/guide/markdown.html#%e4%bb%a3%e7%a0%81%e5%9d%97%e4%b8%ad%e7%9a%84%e8%af%ad%e6%b3%95%e9%ab%98%e4%ba%ae" target="_blank" rel="noopener noreffer">markdown 的样式其他扩展规则</a>，包括代码行号、不同格式代码的高亮、自定义容器等。</li>
+<li><a href="https://vuepress.vuejs.org/zh/guide/markdown.html#%e9%93%be%e6%8e%a5" target="_blank" rel="noopener noreffer">markdown 的链接的默认跳转规则</a>，默认都是跳转至网站内部的其他页面，如需跳转至外部页面记得加上 <code>http/https</code> 前缀。</li>
+</ul>
+<h3 id="35-自定义容器">3.5 自定义容器</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s1.ax1x.com/2020/07/21/UTY2TS.png"
+        data-srcset="https://s1.ax1x.com/2020/07/21/UTY2TS.png, https://s1.ax1x.com/2020/07/21/UTY2TS.png 1.5x, https://s1.ax1x.com/2020/07/21/UTY2TS.png 2x"
+        data-sizes="auto"
+        alt="https://s1.ax1x.com/2020/07/21/UTY2TS.png"
+        title="UTY2TS.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">::: tip 这里是替换内容
+这里是内容
+:::
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="36-官网一些其他功能">3.6 官网一些其他功能</h3>
+<ul>
+<li><a href="https://vuepress.vuejs.org/zh/guide/directory-structure.html#%e9%bb%98%e8%ae%a4%e7%9a%84%e9%a1%b5%e9%9d%a2%e8%b7%af%e7%94%b1" target="_blank" rel="noopener noreffer">整体目录结构</a></li>
+<li><a href="https://vuepress.vuejs.org/zh/config/#theme" target="_blank" rel="noopener noreffer">config.js 的其他细节配置</a></li>
+<li><a href="https://vuepress.vuejs.org/zh/theme/default-theme-config.html#%e6%9c%80%e5%90%8e%e6%9b%b4%e6%96%b0%e6%97%b6%e9%97%b4" target="_blank" rel="noopener noreffer">开启页面自动记录上一次修改时间，并显示在页面右下角</a></li>
+<li><a href="https://vuepress.vuejs.org/zh/plugin/official/plugin-pwa.html#%e4%bd%bf%e7%94%a8" target="_blank" rel="noopener noreffer">开启 pwa，实现离线缓存</a></li>
+<li><a href="https://vuepress.vuejs.org/zh/theme/writing-a-theme.html" target="_blank" rel="noopener noreffer">开发自己的主题</a></li>
+</ul>
+<h2 id="0x04-参考">0x04 参考</h2>
+<ol>
+<li>
+<p><a href="https://juejin.im/post/5dce1e0e5188254eda3936c5#heading-0" target="_blank" rel="noopener noreffer">1 小时搞定 vuepress 快速制作 vue 文档 / 博客 + 免费部署预览</a></p>
+</li>
+<li>
+<p><a href="https://www.vuepress.cn/" target="_blank" rel="noopener noreffer">VuePress 中文文档 | VuePress 中文网</a></p>
+</li>
+<li>
+<p><a href="https://juejin.im/post/5ad69f6c51882579ef4f7b12" target="_blank" rel="noopener noreffer">VuePress 手把手一小時快速踩坑</a></p>
+</li>
+<li>
+<p><a href="https://segmentfault.com/a/1190000016333850" target="_blank" rel="noopener noreffer">VuePress 手摸手教你搭建一个类 Vue 文档风格的技术文档 / 博客</a></p>
+</li>
+</ol></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-07-21</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/how-to-use-vuepress/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://betterrong.github.io/how-to-use-vuepress/" data-title="如何使用 VuePress 写文档" data-hashtags="文档书写,vuepress"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://betterrong.github.io/how-to-use-vuepress/" data-hashtag="文档书写"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://betterrong.github.io/how-to-use-vuepress/" data-title="如何使用 VuePress 写文档"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Reddit" data-sharer="reddit" data-url="https://betterrong.github.io/how-to-use-vuepress/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://betterrong.github.io/how-to-use-vuepress/" data-title="如何使用 VuePress 写文档"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 Pocket" data-sharer="pocket" data-url="https://betterrong.github.io/how-to-use-vuepress/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://betterrong.github.io/how-to-use-vuepress/" data-title="如何使用 VuePress 写文档"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%96%87%E6%A1%A3%E4%B9%A6%E5%86%99/">文档书写</a>,&nbsp;<a href="/tags/vuepress/">vuepress</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/how-to-use-sprintf/" class="prev" rel="prev" title="sprintf()的用法（转载）"><i class="fas fa-angle-left fa-fw"></i>sprintf()的用法（转载）</a>
+            <a href="/leetcode-13/" class="next" rel="next" title="leetcode 13. 罗马数字转整数">leetcode 13. 罗马数字转整数<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.72.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="betterrong.cn" target="_blank">rong</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">待备案</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"eVDqn87XYRkBGm8x6ofX5Tbx-gzGzoHsz","appKey":"QeCWOY0YQkt2Y5fjIdvgllH2","avatar":"mm","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"talk is not cheap,show me your idea...","recordIP":true,"visitor":true}},"data":{"id-1":"VuePress 是尤雨溪本人为了让自己更方便地写文档而使用 vue 创建的静态网站生成器。","id-2":"rong's bridge","id-3":"rong's bridge"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"],"id-3":["id-3"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
