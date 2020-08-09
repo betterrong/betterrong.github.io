@@ -33,7 +33,7 @@
                             "url": "https:\/\/betterrong.github.io\/glob-use\/featured-image.png",
                             "width":  750 ,
                             "height":  300 
-                        }],"genre": "posts","keywords": "shell, glob","wordcount":  1293 ,
+                        }],"genre": "posts","keywords": "shell, glob","wordcount":  1546 ,
         "url": "https:\/\/betterrong.github.io\/glob-use\/","datePublished": "2020-01-24T21:23:35+08:00","dateModified": "2020-06-29T21:23:35+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "","logo": "https:\/\/betterrong.github.io\/images\/avatar.jpg"},"author": {
@@ -110,8 +110,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">glob文件匹配模式</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://betterrong.cn" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>rong</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/documentation/"><i class="far fa-folder fa-fw"></i>文档</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-01-24">2020-01-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1293 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/glob-use/" class="leancloud_visitors" data-flag-title="glob文件匹配模式">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-01-24">2020-01-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1546 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/glob-use/" class="leancloud_visitors" data-flag-title="glob文件匹配模式">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -141,7 +141,8 @@
     </li>
     <li><a href="#0x02-示例">0x02 示例</a></li>
     <li><a href="#0x03-注意事项">0x03 注意事项</a></li>
-    <li><a href="#0x04-参考">0x04 参考</a></li>
+    <li><a href="#0x04-gitigore-格式规范">0x04 .gitigore 格式规范</a></li>
+    <li><a href="#0x05-参考">0x05 参考</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="0x00-简介">0x00 简介</h2>
@@ -152,7 +153,9 @@
             <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">shell 通配符 / glob 模式通常用来匹配目录以及文件，而不是文本！！！</div>
+            <div class="admonition-content"><p>shell 通配符 / glob 模式通常用来匹配目录以及文件，而不是文本！！！</p>
+<p>另外 Glob 不匹配任何隐藏文件或文件夹。</p>
+</div>
         </div>
     </div>
 <h2 id="0x01-语法和使用">0x01 语法和使用</h2>
@@ -233,7 +236,7 @@
 <h3 id="字符取反complementation">字符取反（Complementation）</h3>
 <ul>
 <li>
-<p><code>!</code>排除，如<code>[!abc]</code>、<code>[!a-z]</code>不匹配任意一个<code>[]</code>包含或给定范围的字符。</p>
+<p><code>!</code>排除，如<code>[!abc]</code>、<code>[!a-z]</code>不匹配任意一个<code>[]</code>包含或给定范围的字符。<code>^</code>功能相同。</p>
 <p>例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -377,6 +380,18 @@
 <li>
 <p>glob尝试匹配整个字符串（例：<code>S*.doc</code>将匹配<code>S.doc</code>和<code>SA.doc</code>但不匹配<code>POST.doc</code>或<code>SURREY.docks</code>）正则要只匹配子串须使用<code>^</code>和<code>$</code>所以，<code>S*.doc</code>等价正则是<code>^S.*\.doc$</code></p>
 </li>
+<li>
+<p>字符串片段（segment）是指两个分隔符之间的所有字符组成的字符串。在 <code>glob </code>中，分隔符永远是 <code>/</code> 字符 - 不区分操作系统 - 即便是在采用 <code>\\</code> 作为分隔符的 Windows 操作系统中。在 glob 中，<code>\\</code> 字符被保留作为转义符使用。</p>
+<p>如下，<code>*</code>被转义了，因此，* 将被作为一个普通字符使用，而不再是通配符了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="s1">&#39;glob_with_uncommon_\\*_character.js&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 <h2 id="0x02-示例">0x02 示例</h2>
 <p>这里使用 /etc 下的文件为例</p>
@@ -426,7 +441,14 @@
 <li>想要转义的时候，单引号与双引号使用方法是不同的，单引号会转义所有字符，而且单引号中间不允许再出现单引号，双引号允许出现特定的 shell 元字符，具体字符可以自行查询。</li>
 <li>在使用花括号 <code>{} </code>的时候，里面的单个字符串需要使用单引号或者双引号括住，否则就会视为多个的单个字符。</li>
 </ol>
-<h2 id="0x04-参考">0x04 参考</h2>
+<h2 id="0x04-gitigore-格式规范">0x04 .gitigore 格式规范</h2>
+<ul>
+<li>所有空行或者以注释符号 <code>＃</code> 开头的行都会被 Git 忽略。</li>
+<li>可以使用标准的 glob 模式匹配</li>
+<li>匹配模式最后跟反斜杠（/）说明要忽略的是目录。</li>
+<li>要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。</li>
+</ul>
+<h2 id="0x05-参考">0x05 参考</h2>
 <p><a href="https://www.jianshu.com/p/add26e0f9c93" target="_blank" rel="noopener noreffer">Glob匹配模式</a></p>
 <p><a href="https://www.cnblogs.com/xdlysk/p/5183604.html" target="_blank" rel="noopener noreffer">glob模式</a></p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
