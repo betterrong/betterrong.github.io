@@ -92,7 +92,7 @@ function update() {
         setCookie("_" + code + "_F", uf);
     }else{
         // 这里本来是准备设为未填入图标的一律用一个图标替代
-        // uf = "https://likebetter.gitee.io/imagebed/imgs/link_ico.png";
+        // uf = "https://betterrong.gitee.io/imagebed/imgs/link_ico.png";
         // if (uf.indexOf('http://') == -1 && uf.indexOf('https://') == -1) {
         //     uf = 'http://' + uf;
         // };

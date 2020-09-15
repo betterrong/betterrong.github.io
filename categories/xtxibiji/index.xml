@@ -4,5 +4,12 @@
         <link>https://betterrong.github.io/categories/xtxibiji/</link>
         <description>学习笔记 - 分类 - rong&#39;s bridge</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>likebettergo@163.com (rong)</managingEditor>
-            <webMaster>likebettergo@163.com (rong)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><atom:link href="https://betterrong.github.io/categories/xtxibiji/" rel="self" type="application/rss+xml" /></channel>
+            <webMaster>likebettergo@163.com (rong)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 12 Aug 2020 19:35:12 &#43;0800</lastBuildDate><atom:link href="https://betterrong.github.io/categories/xtxibiji/" rel="self" type="application/rss+xml" /><item>
+    <title>排序-快速排序</title>
+    <link>https://betterrong.github.io/quicksort/</link>
+    <pubDate>Wed, 12 Aug 2020 19:35:12 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://betterrong.github.io/quicksort/</guid>
+    <description><![CDATA[*在无序数组中找到分区点 ，左边都为小于等于分区点的值，右边都为大于等于分区点的值。将整个数组分成 N 个这样的数组，当最后分区小于三个元素时说明]]></description>
+</item></channel>
 </rss>
